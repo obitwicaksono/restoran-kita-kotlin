@@ -30,11 +30,11 @@ Restoran Kita adalah aplikasi katalog makanan modern yang dibangun menggunakan *
 *Detail hidangan dengan deskripsi lengkap dan sistem rating*
 
 ### Profil Restoran (Info)
-<img src="screenshots/profil_screen.png" width="250" />
+<img src="screenshots/profile_screen.png" width="250" />
 *Informasi restoran dengan toggle Dark Mode*
 
 ### Profil Restoran (Jam Operasional)
-<img src="screenshots/profil_screen2.png" width="250" />
+<img src="screenshots/profile_screen2.png" width="250" />
 *Detail jam operasional dan informasi tambahan*
 
 ### Edit Profil (Input)
