@@ -22,7 +22,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PhotoCamera
-import androidx.compose.material.icons.filled.Storefront
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -71,7 +70,6 @@ fun EditProfileScreen(
     val scrollState = rememberScrollState()
     val context = LocalContext.current
 
-    // Initialize states with ViewModel profile info
     var namaInput by remember { mutableStateOf(uiState.nama) }
     var alamatInput by remember { mutableStateOf(uiState.alamat) }
     var deskripsiInput by remember { mutableStateOf(uiState.deskripsi) }
@@ -82,25 +80,24 @@ fun EditProfileScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Edit Profil",
-                        fontFamily = MaterialTheme.typography.titleLarge.fontFamily,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        text = "Edit Profil Restoran",
+                        fontWeight = FontWeight.Bold
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
-                            contentDescription = "Batal",
-                            tint = MaterialTheme.colorScheme.onSurface
+                            contentDescription = "Kembali"
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
-                    scrolledContainerColor = MaterialTheme.colorScheme.surface
-                )
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onSurface
+                ),
+                windowInsets = TopAppBarDefaults.windowInsets
             )
         },
         bottomBar = {
@@ -114,262 +111,137 @@ fun EditProfileScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(innerPadding)
                 .verticalScroll(scrollState)
-                .padding(bottom = innerPadding.calculateBottomPadding())
+                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
         ) {
-            // Edit Banner Container with camera button
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp)
-                    .height(200.dp)
-                    .clip(RoundedCornerShape(16.dp))
-            ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800")
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = "Edit Interior Banner",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
-                )
-
-                // Dark overlay
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.4f))
-                )
-
-                // Camera button overlaid
-                IconButton(
-                    onClick = {
-                        Toast.makeText(context, "Fitur ganti foto latar belakang segera hadir!", Toast.LENGTH_SHORT).show()
-                    },
-                    modifier = Modifier
-                        .background(Color.White.copy(alpha = 0.85f), CircleShape)
-                        .size(48.dp)
-                        .align(Alignment.Center)
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.PhotoCamera,
-                        contentDescription = "Ubah Foto",
-                        tint = Color.Black,
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
-            }
-
-            // Input Form Card
+            // Unified Background Card for all form content
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                shape = RoundedCornerShape(16.dp),
+                    .padding(16.dp),
+                shape = RoundedCornerShape(24.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                    containerColor = MaterialTheme.colorScheme.surface
                 ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(20.dp)
+                        .padding(bottom = 20.dp)
                 ) {
-                    // Nama Restoran Input
-                    Text(
-                        text = "Nama Restoran",
-                        fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 6.dp)
-                    )
-                    OutlinedTextField(
-                        value = namaInput,
-                        onValueChange = { namaInput = it },
-                        singleLine = true,
-                        shape = RoundedCornerShape(8.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface
-                        ),
+                    // Header Banner inside the card
+                    Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .testTag("input_form_nama_restoran")
-                    )
+                            .height(180.dp)
+                            .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+                    ) {
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800")
+                                .crossfade(true)
+                                .build(),
+                            contentDescription = "Banner",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        Box(modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.3f)))
+                        IconButton(
+                            onClick = { Toast.makeText(context, "Fitur segera hadir!", Toast.LENGTH_SHORT).show() },
+                            modifier = Modifier
+                                .background(Color.White.copy(alpha = 0.8f), CircleShape)
+                                .size(44.dp)
+                                .align(Alignment.Center)
+                        ) {
+                            Icon(Icons.Filled.PhotoCamera, contentDescription = null, tint = Color.Black)
+                        }
+                    }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 24.dp)) {
+                        // Form Fields
+                        EditFieldLabel("Nama Restoran")
+                        OutlinedTextField(
+                            value = namaInput,
+                            onValueChange = { namaInput = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        )
 
-                    // Alamat Input
-                    Text(
-                        text = "Alamat",
-                        fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 6.dp)
-                    )
-                    OutlinedTextField(
-                        value = alamatInput,
-                        onValueChange = { alamatInput = it },
-                        singleLine = false,
-                        maxLines = 3,
-                        shape = RoundedCornerShape(8.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .testTag("input_form_alamat")
-                    )
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        EditFieldLabel("Alamat")
+                        OutlinedTextField(
+                            value = alamatInput,
+                            onValueChange = { alamatInput = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            maxLines = 3
+                        )
 
-                    // Deskripsi Input
-                    Text(
-                        text = "Deskripsi Restoran",
-                        fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 6.dp)
-                    )
-                    OutlinedTextField(
-                        value = deskripsiInput,
-                        onValueChange = { deskripsiInput = it },
-                        singleLine = false,
-                        maxLines = 5,
-                        shape = RoundedCornerShape(8.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .testTag("input_form_deskripsi")
-                    )
+                        Spacer(modifier = Modifier.height(16.dp))
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        EditFieldLabel("Deskripsi Restoran")
+                        OutlinedTextField(
+                            value = deskripsiInput,
+                            onValueChange = { deskripsiInput = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            maxLines = 5
+                        )
 
-                    // Jam Buka Input
-                    Text(
-                        text = "Jam Operasional",
-                        fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(bottom = 6.dp)
-                    )
-                    OutlinedTextField(
-                        value = jamBukaInput,
-                        onValueChange = { jamBukaInput = it },
-                        singleLine = true,
-                        shape = RoundedCornerShape(8.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface
-                        ),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .testTag("input_form_jam_buka")
-                    )
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        EditFieldLabel("Jam Operasional")
+                        OutlinedTextField(
+                            value = jamBukaInput,
+                            onValueChange = { jamBukaInput = it },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Action Buttons Form
-            Column(
+            // Action Buttons
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Save Button (Simpan)
-                Button(
-                    onClick = {
-                        if (namaInput.isBlank() || alamatInput.isBlank() || deskripsiInput.isBlank() || jamBukaInput.isBlank()) {
-                            Toast.makeText(context, "Semua kolom form wajib diisi!", Toast.LENGTH_SHORT).show()
-                        } else {
-                            viewModel.updateProfil(namaInput, alamatInput, deskripsiInput, jamBukaInput)
-                            Toast.makeText(context, "Profil Restoran diperbarui!", Toast.LENGTH_SHORT).show()
-                            navController.popBackStack()
-                        }
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
-                    ),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .testTag("btn_save_profile")
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Check,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Simpan",
-                            fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 15.sp
-                        )
-                    }
-                }
-
-                // Cancel Button (Batal)
                 OutlinedButton(
                     onClick = { navController.popBackStack() },
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = MaterialTheme.colorScheme.primary
-                    ),
-                    shape = RoundedCornerShape(12.dp),
-                    border = ButtonDefaults.outlinedButtonBorder.copy(),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .testTag("btn_cancel_profile")
+                    modifier = Modifier.weight(1f).height(52.dp),
+                    shape = RoundedCornerShape(12.dp)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Cancel,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Batal",
-                            fontFamily = MaterialTheme.typography.labelLarge.fontFamily,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 15.sp
-                        )
-                    }
+                    Text("Batal", fontWeight = FontWeight.Bold)
+                }
+                Button(
+                    onClick = {
+                        viewModel.updateProfil(namaInput, alamatInput, deskripsiInput, jamBukaInput)
+                        Toast.makeText(context, "Profil Diperbarui!", Toast.LENGTH_SHORT).show()
+                        navController.popBackStack()
+                    },
+                    modifier = Modifier.weight(1f).height(52.dp),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Text("Simpan", fontWeight = FontWeight.Bold)
                 }
             }
-            
             Spacer(modifier = Modifier.height(24.dp))
         }
     }
+}
+
+@Composable
+fun EditFieldLabel(text: String) {
+    Text(
+        text = text,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(bottom = 8.dp, start = 4.dp)
+    )
 }
