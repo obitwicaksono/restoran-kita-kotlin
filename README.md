@@ -21,7 +21,6 @@ Restoran Kita adalah aplikasi katalog makanan modern yang dibangun menggunakan *
 -   **Kotlin**: Bahasa pemrograman utama.
 -   **Jetpack Compose**: Toolkit modern untuk membangun UI native Android.
 -   **Compose Navigation**: Untuk navigasi antar layar yang efisien.
--   **Coil**: Image loading library untuk memuat gambar dari URL.
 -   **ViewModel & StateFlow**: Manajemen state aplikasi mengikuti pola arsitektur MVVM.
 -   **Material Design 3**: Menggunakan standar desain terbaru dari Google.
 
