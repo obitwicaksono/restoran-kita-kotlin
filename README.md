@@ -1,5 +1,8 @@
 # Tugas UTS Pemrograman Android 2026
-**Robertho Wicaksono (23083000106)**
+
+Nama: Robertho Wicaksono
+NIM: 23083000106
+Kelas: 6A2
 
 # Restoran Kita - Modern Food Delivery App
 
