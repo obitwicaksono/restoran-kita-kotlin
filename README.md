@@ -1,4 +1,4 @@
-# Tugas UTS Pemrograman Android 2026
+# Tugas UTS Pemrograman Mobile 2026
 
 - Nama: Robertho Wicaksono
 - NIM: 23083000106
