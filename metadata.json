@@ -1,0 +1,6 @@
+{
+  "name": "Restoran Kita",
+  "description": "Aplikasi Menu dan Profil Restoran dengan tema Vibrant Palette, Navigation Compose, dan SharedPreferences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
