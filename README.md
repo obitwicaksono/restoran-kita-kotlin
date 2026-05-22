@@ -13,15 +13,39 @@ Restoran Kita adalah aplikasi katalog makanan modern yang dibangun menggunakan *
 
 ## Screenshot
 
+### Beranda (Light Mode)
+![Home Screen](screenshots/home_screen.png)
+*Halaman utama dengan sambutan dan menu unggulan*
+
+### Beranda (Dark Mode)
+![Home Screen Dark Mode](screenshots/home_dark_mode.png)
+*Tampilan aplikasi saat Mode Gelap diaktifkan*
+
+### Menu Screen
 ![Menu Screen](screenshots/menu_screen.png)
-*Antarmuka Menu Restoran*
+*Antarmuka Menu Restoran dengan filter kategori*
+
+### Detail Menu
+![Detail Menu](screenshots/detail_menu.png)
+*Detail hidangan dengan deskripsi lengkap dan sistem rating*
+
+### Profil Restoran
+![Profil Restoran](screenshots/profil_restoran.png)
+*Informasi restoran dengan toggle Dark Mode*
+
+### Edit Profil (Input)
+![Edit Profil Top](screenshots/edit_profil_top.png)
+*Form input nama dan alamat restoran*
+
+### Edit Profil (Jam Operasional & Aksi)
+![Edit Profil Bottom](screenshots/edit_profil_bottom.png)
+*Bagian bawah halaman edit menampilkan jam operasional serta tombol Simpan dan Batal*
 
 ## Teknologi yang Digunakan
 
 -   **Kotlin**: Bahasa pemrograman utama.
 -   **Jetpack Compose**: Toolkit modern untuk membangun UI native Android.
 -   **Compose Navigation**: Untuk navigasi antar layar yang efisien.
--   **Coil**: Image loading library untuk memuat gambar dari URL.
 -   **ViewModel & StateFlow**: Manajemen state aplikasi mengikuti pola arsitektur MVVM.
 -   **Material Design 3**: Menggunakan standar desain terbaru dari Google.
 
