@@ -44,7 +44,7 @@ sealed class NavigationItem(
     val testTag: String
 ) {
     object Home : NavigationItem("home", "Home", Icons.Filled.Home, Icons.Outlined.Home, "nav_home_tab")
-    object Menu : NavigationItem("menu", "Menu", Icons.Filled.RestaurantMenu, Icons.Outlined.RestaurantMenu, "nav_orders_tab")
+    object Menu : NavigationItem("menu", "Menu", Icons.Filled.RestaurantMenu, Icons.Outlined.RestaurantMenu, "nav_menu_tab")
     object Cart : NavigationItem("cart", "Cart", Icons.Filled.ShoppingCart, Icons.Outlined.ShoppingCart, "nav_cart_tab")
     object Profile : NavigationItem("profile", "Profile", Icons.Filled.Person, Icons.Outlined.Person, "nav_profile_tab")
 }
@@ -69,7 +69,6 @@ fun RestoranBottomNavBar(
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
         tonalElevation = 8.dp,
-        // We use navigationBarsPadding on the modifier for reliable touch area on 3-button nav
         windowInsets = WindowInsets(0, 0, 0, 0),
         modifier = modifier
             .navigationBarsPadding()
