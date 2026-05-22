@@ -1,3 +1,5 @@
+# Tugas UTS Pemrograman Android 2026
+## Robertho Wicaksono (23083000106)
 # Restoran Kita - Modern Food Delivery App
 
 Restoran Kita adalah aplikasi katalog makanan modern yang dibangun menggunakan **Jetpack Compose**. Aplikasi ini dirancang untuk memberikan pengalaman memesan makanan yang mulus dengan antarmuka yang bersih dan responsif.
