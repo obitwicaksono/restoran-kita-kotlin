@@ -14,32 +14,32 @@ Restoran Kita adalah aplikasi katalog makanan modern yang dibangun menggunakan *
 ## Screenshot
 
 ### Beranda (Light Mode)
-![Home Screen](screenshots/home_screen.png)
+<img src="screenshots/home_screen.png" width="250" />
 *Halaman utama dengan sambutan dan menu unggulan*
 
 ### Beranda (Dark Mode)
-![Home Screen Dark Mode](screenshots/home_dark_mode.png)
+<img src="screenshots/dark_mode.png" width="250" />
 *Tampilan aplikasi saat Mode Gelap diaktifkan*
 
 ### Menu Screen
-![Menu Screen](screenshots/menu_screen.png)
+<img src="screenshots/menu_screen.png" width="250" />
 *Antarmuka Menu Restoran dengan filter kategori*
 
 ### Detail Menu
-![Detail Menu](screenshots/detail_menu.png)
+<img src="screenshots/detail_menu_screen.png" width="250" />
 *Detail hidangan dengan deskripsi lengkap dan sistem rating*
 
-### Profil Restoran
-![Profil Restoran](screenshots/profil_restoran.png)
+### Profil Restoran (Info)
+<img src="screenshots/profil_screen.png" width="250" />
 *Informasi restoran dengan toggle Dark Mode*
 
-### Edit Profil (Input)
-![Edit Profil Top](screenshots/edit_profil_top.png)
-*Form input nama dan alamat restoran*
+### Profil Restoran (Jam Operasional)
+<img src="screenshots/profil_screen2.png" width="250" />
+*Detail jam operasional dan informasi tambahan*
 
-### Edit Profil (Jam Operasional & Aksi)
-![Edit Profil Bottom](screenshots/edit_profil_bottom.png)
-*Bagian bawah halaman edit menampilkan jam operasional serta tombol Simpan dan Batal*
+### Edit Profil (Input)
+<img src="screenshots/edit_profile_screen.png" width="250" />
+*Halaman form edit profil restoran*
 
 ## Teknologi yang Digunakan
 
